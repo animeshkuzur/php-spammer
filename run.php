@@ -16,7 +16,7 @@ $emails = array('animesh.amank21@gmail.com','pankaj11520@ducic.ac.in'
 $count = 2;
 $a =0;
 try {
-	//foreach ($emails as $email) {
+	foreach ($emails as $email) {
 		
 		$mail = new PHPMailer(true);
 	    //Server settings
@@ -32,14 +32,14 @@ try {
 	    //Recipients
 	    $mail->setFrom('convoke.ducic@gmail.com', 'Convoke');
 	    //$mail->addAddress('joe@example.net', 'Joe User');     // Add a recipient
-	    $mail->addAddress('animesh.amank21@gmail.com');               // Name is optional
+	    $mail->addAddress($email);               // Name is optional
 	    $mail->addReplyTo('convoke.ducic@gmail.com', 'Convoke');
 	   // $mail->addCC('cc@example.com');
 	    //$mail->addBCC('bcc@example.com');
 
 	    //Attachments
 	    //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-	    $mail->addAttachment('/tmp/Convoke_workshop.png', 'Workshops.jpg');    // Optional name
+	    $mail->addAttachment('/tmp/Convoke_workshop.png');    // Optional name
 
 	    //Content
 	    $mail->isHTML(true);                                  // Set email format to HTML
@@ -51,7 +51,7 @@ try {
 	    $a+=1;
 	    echo 'Message sent to '.$email.'\n';
 	    echo '========'.$a.'/'.$count.'========';
-	//}
+	}
 } catch (Exception $e) {
     echo 'Message could not be sent.';
     echo 'Mailer Error: ' . $mail->ErrorInfo;
